@@ -1,0 +1,1378 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rohith_CR</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@800&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #f5f3ee;
+      --card: #ffffff;
+      --dark: #111110;
+      --accent: #d4522a;
+      --accent2: #2a5fd4;
+      --muted: #4a4845;
+      --border: #e2dfd8;
+      --tag: #ede9e2;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 5vw;
+      background: rgba(245, 243, 238, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 6rem 5vw 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-text {
+      position: absolute;
+      top: 40%;
+      right: 5vw;
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1rem, 1.9vw, 1.75rem);
+      font-weight: 600;
+      color: rgba(17, 17, 16, 0.18);
+      pointer-events: none;
+      letter-spacing: 0.01em;
+      user-select: none;
+      text-align: right;
+      line-height: 1.7;
+      max-width: 480px;
+    }
+
+    .hero-bg-text .quote-attr {
+      font-size: 0.75em;
+      font-weight: 400;
+      opacity: 0.75;
+      display: block;
+      margin-top: 0.15rem;
+    }
+
+    .hero-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: up 0.7s ease 0.1s both;
+    }
+
+    .hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.5rem, 2vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: up 0.7s ease 0.2s both;
+    }
+
+    .hero h1 .line2 {
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      color: var(--accent);
+      display: block;
+      margin-top: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: #2e2d2b;
+      max-width: 900px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+      opacity: 0;
+      animation: up 0.7s ease 0.35s both;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: up 0.7s ease 0.45s both;
+    }
+
+    .pill {
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      border: 1.5px solid var(--border);
+      background: var(--card);
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .pill .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #3cba6a;
+    }
+
+    .ambassador-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(145deg, #003666, #00508b);
+      color: #fff;
+      padding: 0.45rem 1.25rem;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0, 54, 102, 0.2);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .ambassador-badge:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(0, 54, 102, 0.3);
+      filter: brightness(1.1);
+    }
+
+    .ambassador-badge img {
+      width: 16px;
+      height: 16px;
+      filter: brightness(0) invert(1);
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: up 0.7s ease 0.55s both;
+    }
+
+    .btn {
+      padding: 0.75rem 1.75rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .btn-dark {
+      background: var(--dark);
+      color: #f5f3ee;
+    }
+
+    .btn-dark:hover {
+      background: #2a2a28;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--dark);
+    }
+
+    .hero-logo-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: up 0.7s ease 0.55s both;
+    }
+
+    .hero-logo-btn {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 50%;
+      transition: all 0.2s;
+      overflow: hidden;
+      padding: 0;
+      text-decoration: none;
+    }
+
+    .hero-logo-btn:hover {
+      border-color: var(--dark);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(17, 17, 16, 0.08);
+    }
+
+    .hero-logo-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .doc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--dark);
+      text-decoration: none;
+      background: var(--tag);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    .doc-link:hover {
+      background: var(--border);
+      color: var(--accent);
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 0.75rem 5vw;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    #experience,
+    #talk,
+    #projects {
+      padding-top: 0.5rem;
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-num {
+      display: none;
+    }
+
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+
+
+    /* EXPERIENCE */
+    .exp-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .exp-card {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.9rem 2.2rem;
+      display: grid;
+      grid-template-columns: 64px 1fr auto;
+      gap: 1.25rem;
+      align-items: flex-start;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .exp-card:hover {
+      box-shadow: 0 8px 28px rgba(17, 17, 16, 0.09);
+      transform: translateY(-2px);
+    }
+
+    .co-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .co-logo img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .co-logo .lt {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.62rem;
+      text-align: center;
+      line-height: 1.2;
+      padding: 4px;
+    }
+
+    .exp-role {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.98rem;
+      margin-bottom: 0.15rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .exp-co-name {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.65rem;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .exp-bullets li {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.6;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .exp-bullets li::before {
+      content: 'Â·';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 1.3rem;
+      line-height: 1.15;
+    }
+
+    .exp-bullets li strong {
+      color: var(--dark);
+      font-weight: 500;
+    }
+
+    .exp-meta {
+      text-align: right;
+    }
+
+    .exp-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      white-space: nowrap;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .exp-loc {
+      font-size: 0.76rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      justify-content: flex-end;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.18rem 0.55rem;
+      border-radius: 4px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .badge-intern {
+      background: #fff4e0;
+      color: #c87700;
+    }
+
+    .badge-current {
+      background: #e6f9ee;
+      color: #1a7a42;
+    }
+
+    /* PROMOTION HIERARCHY */
+    .exp-promo-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .promo-role {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .role-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 12px;
+      flex-shrink: 0;
+      padding-top: 0.4rem;
+    }
+
+    .role-dot {
+      width: 9px;
+      height: 9px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .role-line {
+      width: 2px;
+      background: var(--border);
+      flex-grow: 1;
+      margin-top: 4px;
+      margin-bottom: -1.6rem;
+    }
+
+    .promo-role:last-child .role-line {
+      display: none;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .proj-card {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.6rem;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .proj-card:hover {
+      box-shadow: 0 8px 28px rgba(17, 17, 16, 0.09);
+      transform: translateY(-2px);
+    }
+
+    .proj-type {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.65rem;
+    }
+
+    .proj-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .proj-desc {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .proj-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1.1rem;
+    }
+
+    .proj-tag {
+      font-size: 0.7rem;
+      padding: 0.22rem 0.6rem;
+      background: var(--tag);
+      border-radius: 4px;
+      color: var(--dark);
+      font-weight: 500;
+    }
+
+    /* SKILLS */
+    .skills-section {
+      background: #f0ece4;
+      padding: 2rem 5vw 5rem;
+    }
+
+    .skills-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      margin-left: 0;
+    }
+
+    .skills-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .skills-header .section-num {
+      color: var(--accent);
+    }
+
+    .skills-header .section-title {
+      color: var(--dark);
+    }
+
+    .skill-groups {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-group-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .skill-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.4rem 0.85rem;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.79rem;
+      color: #1a1a18;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .skill-chip:hover {
+      background: var(--card);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .skill-chip img {
+      width: 17px;
+      height: 17px;
+      object-fit: contain;
+    }
+
+    /* EDUCATION */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .edu-card {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.9rem 2.2rem;
+      display: flex;
+      gap: 1.1rem;
+      align-items: flex-start;
+      transition: all 0.2s;
+    }
+
+    .edu-card:hover {
+      box-shadow: 0 6px 20px rgba(17, 17, 16, 0.07);
+      transform: translateY(-2px);
+    }
+
+    .edu-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .edu-logo img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .edu-logo .lt {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.6rem;
+      text-align: center;
+      line-height: 1.2;
+      padding: 4px;
+    }
+
+    .edu-school {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.98rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .edu-degree {
+      font-size: 0.84rem;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+    }
+
+    #education {
+      padding-top: 0;
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    /* HOBBIES */
+    .hobbies-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .hobby {
+      padding: 0.6rem 1.25rem;
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.875rem;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .hobby:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      padding: 3.5rem 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-name {
+      font-family: 'Georgia', serif;
+      font-weight: 700;
+      font-size: 1.75rem;
+      color: #f5f3ee;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.95rem;
+      color: rgba(245, 243, 238, 0.35);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.97rem;
+      color: rgba(245, 243, 238, 0.55);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #f5f3ee;
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: #ffffff;
+      width: 100%;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    @keyframes up {
+      from {
+        opacity: 0;
+        transform: translateY(22px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    @media(max-width:768px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 6rem 1.5rem 3rem;
+      }
+
+      .section {
+        padding: 4rem 1.5rem;
+      }
+
+      .exp-card {
+        grid-template-columns: 48px 1fr;
+      }
+
+      .exp-meta {
+        display: none;
+      }
+
+      .edu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        padding: 2.5rem 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Rohith <span>CR</span></div>
+    <ul class="nav-links">
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg-text">"In God we trust, all others must bring data."<span class="quote-attr">â€” W. Edwards
+        Deming</span></div>
+
+    <h1>
+      <span class="line1">Hey there! I'm Rohith.</span><br />
+
+      <span class="line2">Business Intelligence and Data Science Professional</span>
+    </h1>
+    <p class="hero-sub">Data Science professional with 5 years building enterprise-scale data analytics solutions across
+      Amazon, JPMorgan,
+      and high-growth startups. A Data Science graduate from the University of Washington and a Tableau Ambassador 2025,
+      I specialize in
+      full cycle BI solutions : translating complex data into compelling narratives through dashboards, ETL pipelines,
+      and emerging AI/BI
+      capabilities. With strong storytelling and communication skills , I have experience in cross team collaboration
+      and enabling data-driven
+      decision-making.</p>
+    <div class="hero-pills">
+      <span class="pill"><span class="dot"></span> Open to immediate full-time roles</span>
+    </div>
+    <div class="hero-logo-btns">
+      <a class="hero-logo-btn" href="https://www.linkedin.com/in/rohith-cr" target="_blank" title="LinkedIn">
+        <img
+          src="assets/images/media__1772933241649.png"
+          alt="LinkedIn" />
+      </a>
+      <a class="hero-logo-btn" href="https://public.tableau.com/app/profile/rohith.cr/vizzes" target="_blank"
+        title="Tableau Public">
+        <img
+          src="assets/images/media__1772932905269.png"
+          alt="Tableau" />
+      </a>
+      <a class="hero-logo-btn" href="https://medium.com/@rohith123c.r" target="_blank" title="Medium">
+        <img
+          src="assets/images/media__1772933454999.png"
+          alt="Medium" />
+      </a>
+      <a class="hero-logo-btn" href="mailto:cr.rohith10@gmail.com" title="Email Me">
+        <img
+          src="assets/images/media__1772933003973.jpg"
+          alt="Email" />
+      </a>
+      <div class="hero-logo-btn" title="GitHub">
+        <img
+          src="assets/images/media__1773036748888.png"
+          alt="GitHub" />
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 0 5vw 1.5rem; opacity: 0; animation: up 0.7s ease 0.65s both;">
+    <a href="#contact" class="pill" style="display: inline-flex;">
+      <i class="fa-solid fa-envelope" style="font-size: 0.75rem;"></i>
+      Contact me
+    </a>
+  </div>
+
+  <!-- EDUCATION -->
+  <section class="section" id="education">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="exp-grid">
+      <div class="edu-card">
+        <div class="edu-logo">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/5/58/University_of_Washington_seal.svg/200px-University_of_Washington_seal.svg.png"
+            alt="UW"
+            onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\'lt\' style=\'color:#4b2e83;\'>UW</div>'" />
+        </div>
+        <div>
+          <div class="edu-school">University of Washington, Seattle</div>
+          <div class="edu-degree">MS in Data Science </div>
+          <div class="edu-year">Sept 2024 - March2026</div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-logo">
+          <img
+            src="assets/images/media__1772931702965.png"
+            alt="VTU"
+            onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\'lt\' style=\'color:#1a237e;\'>VTU<br />ðŸŽ“</div>'" />
+        </div>
+        <div>
+          <div class="edu-school">Visveswaraya Technological University, Bengaluru,India</div>
+          <div class="edu-degree">BS in Mechanical Engineering </div>
+          <div class="edu-year">2016 â€“ 2020</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Experience</h2>
+    </div>
+    <div class="exp-grid">
+
+      <div class="exp-card">
+        <div class="co-logo">
+          <img
+            src="assets/images/media__1772931844828.png"
+            alt="Contextual AI"
+            onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\'lt\' style=\'color:#1d4ed8;\'>CTX<br />AI</div>'" />
+        </div>
+        <div>
+          <div class="exp-role">Analytics Engineer <span class="badge badge-current">Current</span></div>
+          <div class="exp-co-name">Contextual AI â€” Capstone</div>
+          <ul class="exp-bullets">
+            <li>Built a <strong>multi-model RAG agent</strong> solving climate tech problems using LLMs, vector search
+              &amp; structured retrieval pipelines.</li>
+            <li>Translated ambiguous sustainability challenges into <strong>measurable AI solutions</strong> with domain
+              stakeholders.</li>
+          </ul>
+        </div>
+        <div class="exp-meta">
+          <span class="exp-period">Nov 2025 â€“ Present</span>
+          <span class="exp-loc">ðŸ“ Seattle, WA</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="co-logo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon"
+            onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\'lt\' style=\'color:#ff9900;\'>AMZ</div>'" />
+        </div>
+        <div>
+          <div class="exp-role">Business Intelligence Engineer <span class="badge badge-intern">Internship</span></div>
+          <div class="exp-co-name">Amazon</div>
+          <ul class="exp-bullets">
+            <li>Built ETL pipelines on <strong>AWS Glue &amp; Redshift</strong> with partition strategies and DQ
+              validation checks.</li>
+            <li>Developed <strong>3 QuickSight dashboards</strong> enabling Network Optimization team to self-serve
+              performance metrics.</li>
+            <li>Standardized KPIs across <strong>9+ dashboards &amp; WBR decks</strong>, ensuring consistency for 50+
+              leadership stakeholders.</li>
+          </ul>
+        </div>
+        <div class="exp-meta">
+          <span class="exp-period">Jun â€“ Sep 2025</span>
+          <span class="exp-loc">ðŸ“ Bellevue, WA</span>
+        </div>
+      </div>
+
+      <!-- JPMorgan Promotion Block -->
+      <div class="exp-card">
+        <div class="co-logo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/J_P_Morgan_Logo_2008_1.svg" alt="JPMorgan"
+            onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\'lt\' style=\'color:#003087;\'>JPM</div>'" />
+        </div>
+        <div>
+          <div class="exp-co-name"
+            style="font-size: 1.05rem; color: var(--dark); font-weight: 700; margin-bottom: 1.4rem;">JPMorganChase</div>
+
+          <div class="exp-promo-container">
+            <!-- Row 1: Senior Role -->
+            <div class="promo-role">
+              <div class="role-visual">
+                <div class="role-dot"></div>
+                <div class="role-line"></div>
+              </div>
+              <div>
+                <div class="exp-role" style="font-size: 0.95rem;">Senior Business Intelligence Engineer</div>
+                <div class="exp-period" style="margin-bottom: 0.5rem; color: var(--accent); font-weight: 500;">Jan â€“ Sep
+                  2024</div>
+                <ul class="exp-bullets">
+                  <li>Built <strong>star schema fact &amp; dimension models</strong> powering 4 self-service dashboards
+                    â€”
+                    improved time-to-insight by ~55%.</li>
+                  <li>Led full-cycle development of <strong>5 Tableau dashboards</strong> for Consumer Finance tracking
+                    12+
+                    KPIs for 200+ stakeholders.</li>
+                  <li>Identified monetization opportunities contributing to a <strong>~5% revenue increase</strong> in
+                    processing fees across AMER.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Row 2: Junior Role -->
+            <div class="promo-role">
+              <div class="role-visual">
+                <div class="role-dot"></div>
+                <div class="role-line"></div>
+              </div>
+              <div>
+                <div class="exp-role" style="font-size: 0.95rem;">Business Intelligence Engineer</div>
+                <div class="exp-period" style="margin-bottom: 0.5rem; color: var(--accent); font-weight: 500;">Jun 2022
+                  â€“ Dec 2023</div>
+                <ul class="exp-bullets">
+                  <li>Implemented <strong>PII masking &amp; Row-Level Security (RLS)</strong> for Consumer Finance Data
+                    Governance compliance.</li>
+                  <li>Built ETL workflows from <strong>8+ multimodal sources</strong> using Alteryx &amp; Power Query â€”
+                    saved
+                    ~30 hrs/reporting cycle.</li>
+                  <li>Maintained 20+ Power BI dashboards, delivering <strong>40+ feature enhancements</strong> in agile
+                    sprints.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exp-meta">
+          <span class="exp-period">June 2022â€“Sept 2024</span>
+          <span class="exp-loc">ðŸ“ India</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="co-logo">
+          <img
+            src="assets/images/media__1772931858567.png"
+            alt="USEReady"
+            onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\'lt\' style=\'color:#0050a0;\'>USE<br />READY</div>'" />
+        </div>
+        <div>
+          <div class="exp-role">Business Intelligence Engineer</div>
+          <div class="exp-co-name">USEReady Technology</div>
+          <ul class="exp-bullets">
+            <li>Built Confluence documentation for <strong>Equinix</strong> data center teams, reducing manual support
+              requests by 24%.</li>
+            <li>Automated 18 hardware ops reports with SQL, <strong>saving ~450 hours annually</strong>.</li>
+            <li>Consolidated 30+ legacy Tableau workbooks via Asset Rationalization â€” cut compute costs by ~30%.</li>
+          </ul>
+        </div>
+        <div class="exp-meta">
+          <span class="exp-period">Apr 2021 â€“ Jun 2022</span>
+          <span class="exp-loc">ðŸ“ India</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="co-logo">
+          <img
+            src="assets/images/media__1772931873417.png"
+            alt="Shadowfax"
+            onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\'lt\' style=\'color:#f97316;\'>SHADOW<br />FAX</div>'" />
+        </div>
+        <div>
+          <div class="exp-role">Analytics Engineer</div>
+          <div class="exp-co-name">Shadowfax Technology</div>
+          <ul class="exp-bullets">
+            <li>Ran shipment segmentation + <strong>controlled A/B testing</strong>, reducing damage incidents by 20%
+              QoQ.</li>
+            <li>Built PDF parsing pipeline with PyMuPDF + regex to ingest <strong>140+ PDFs into PostgreSQL</strong>,
+              boosting productivity ~60%.</li>
+          </ul>
+        </div>
+        <div class="exp-meta">
+          <span class="exp-period">Jan 2020 â€“ Apr 2021</span>
+          <span class="exp-loc">ðŸ“ India</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- TALK / PRESENTATIONS -->
+  <section class="section" id="talk">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Talks and Community Engagement</h2>
+    </div>
+
+    <div class="docs-grid" style="display: grid; gap: 4rem;">
+      <!-- Talk Item 1: TUG -->
+      <div class="doc-item" style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: start;">
+        <div class="doc-visual"
+          style="border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.08); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;">
+          <img
+            src="assets/images/media__1772959455233.jpg"
+            alt="Tableau TUG Speaker" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+        </div>
+        <div class="doc-content">
+          <div
+            style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.1em; font-weight: 600;">
+            Guest Speaker</div>
+          <h3
+            style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.5rem; margin-bottom: 1.25rem; color: var(--dark); line-height: 1.3; font-weight: 800;">
+            Tableau User Group Meet â€” Seattle</h3>
+          <p style="font-size: 1rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem;">
+            Presented at the <strong>Seattle Tableau User Group</strong> on strategies for reshaping dashboard insights
+            into compelling narratives for executive-level communication.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+            <a href="https://usergroups.tableau.com/events/details/tableau-seattle-tableau-user-group-presents-seatug-dashboard-insights-to-data-stories/"
+              target="_blank" class="doc-link" style="padding: 0.6rem 1rem;">
+              Event Announcement <i class="fa-solid fa-arrow-up-right-from-square"
+                style="font-size: 0.65rem; opacity: 0.6;"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Community Item 2: Tableau Ambassador -->
+      <div class="doc-item"
+        style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: start; border-top: 1px solid var(--border); padding-top: 4rem;">
+        <div class="doc-visual"
+          style="border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; background: #001639; box-shadow: 0 10px 30px rgba(0,0,0,0.08); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;">
+          <img
+            src="assets/images/media__1772967181680.png"
+            alt="Tableau Student Ambassador Badge"
+            style="width: 85%; height: auto; object-fit: contain; display: block;" />
+        </div>
+        <div class="doc-content">
+          <div
+            style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.1em; font-weight: 600;">
+            Salesforce Recognition</div>
+          <h3
+            style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.5rem; margin-bottom: 1.25rem; color: var(--dark); line-height: 1.3; font-weight: 800;">
+            Tableau Student Ambassador 2025â€“26</h3>
+          <p style="font-size: 1rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem;">
+            Honored by <strong>Salesforce</strong> as a Tableau Ambassador, a distinction held by 350 data
+            professionals worldwide for sustained contributions to the data visualization community through leading user
+            groups, publishing viz tutorials, and mentoring peers. My published work on Tableau Public has accumulated
+            200K+ impressions and 100K+ profile views.
+          </p>
+
+          <div style="display: flex; gap: 0.75rem; margin-bottom: 2rem;">
+            <div style="background: var(--tag); padding: 0.6rem 1rem; border-radius: 8px;">
+              <div style="font-weight: 800; color: var(--dark); font-size: 1.1rem;">200k+</div>
+              <div
+                style="font-size: 0.6rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">
+                Dashboard Impressions</div>
+            </div>
+            <div style="background: var(--tag); padding: 0.6rem 1rem; border-radius: 8px;">
+              <div style="font-weight: 800; color: var(--dark); font-size: 1.1rem;">100k+</div>
+              <div
+                style="font-size: 0.6rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">
+                Profile Views</div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+            <a href="https://public.tableau.com/app/profile/rohith.cr/vizzes" target="_blank" class="doc-link"
+              style="padding: 0.6rem 1rem;">
+              Tableau Public Profile <i class="fa-solid fa-arrow-up-right-from-square"
+                style="font-size: 0.65rem; opacity: 0.6;"></i>
+            </a>
+            <a href="https://www.tableau.com/blog/introducing-2025-tableau-ambassadors" target="_blank" class="doc-link"
+              style="padding: 0.6rem 1rem;">
+              Official Announcement <i class="fa-solid fa-medal" style="font-size: 0.65rem; opacity: 0.6;"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Projects</h2>
+    </div>
+    <div class="projects-grid">
+
+      <div class="proj-card">
+        <p class="proj-type">Data Engineering</p>
+        <h3 class="proj-title">E-Commerce Event Analytics</h3>
+        <p class="proj-desc">A production-grade data engineering project
+          that transforms streaming e-commerce events into a query-ready analytical dataset using AWS serverless
+          technologies.</p>
+        <div class="proj-tags"><span class="proj-tag">AWS Glue</span><span class="proj-tag">AWS Athena</span><span
+            class="proj-tag">AWS Lambda</span><span class="proj-tag">AWS S3</span></div>
+        <div style="margin-top: 1rem;">
+          <a href="https://github.com/Rohithcr02/AWS-Event-Analytics-Pipeline" target="_blank"
+            style="display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; font-weight: 600; color: #1a1a18; text-decoration: none; background: #f0ece4; border: 1.5px solid #e2dfd8; padding: 0.35rem 0.85rem; border-radius: 6px; transition: all 0.2s;">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <p class="proj-type">Data Engineering</p>
+        <h3 class="proj-title">Amazon Network Optimization</h3>
+        <p class="proj-desc">End-to-end ETL on AWS Glue + Redshift feeding 3 QuickSight dashboards for Amazon's Network
+          Optimization team. Standardized KPI definitions across 9+ dashboards for 50+ leadership stakeholders.</p>
+        <div class="proj-tags"><span class="proj-tag">AWS Glue</span><span class="proj-tag">Redshift</span><span
+            class="proj-tag">QuickSight</span><span class="proj-tag">ETL</span></div>
+      </div>
+
+      <div class="proj-card">
+        <p class="proj-type">NLP / Automation</p>
+        <h3 class="proj-title">PDF-to-PostgreSQL Pipeline</h3>
+        <p class="proj-desc">Automated text extraction pipeline using PyMuPDF + regex to parse 140+ logistics PDFs into
+          normalized PostgreSQL. Enabled search and retrieval, improving operations productivity by ~60%.</p>
+        <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">PyMuPDF</span><span
+            class="proj-tag">PostgreSQL</span><span class="proj-tag">Regex</span></div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- SKILLS â€” dark -->
+  <div class="skills-section" id="skills">
+    <div class="skills-inner">
+      <div class="skills-header">
+        <span class="section-num">05</span>
+        <h2 class="section-title">Skills</h2>
+      </div>
+      <div class="skill-groups">
+
+        <div>
+          <div class="skill-group-title">Languages &amp; Databases</div>
+          <div class="skill-icons">
+            <div class="skill-chip"><img src="https://api.iconify.design/logos/python.svg" alt="" />Python</div>
+            <div class="skill-chip"><img src="https://api.iconify.design/logos/postgresql.svg" alt="" />SQL</div>
+            <div class="skill-chip"><img src="https://api.iconify.design/logos/postgresql.svg" alt="" />PostgreSQL</div>
+            <div class="skill-chip"><img src="https://api.iconify.design/logos/oracle.svg" alt="" />Oracle</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="skill-group-title">BI &amp; Analytics</div>
+          <div class="skill-icons">
+            <div class="skill-chip"><img src="https://api.iconify.design/logos/tableau.svg" alt="" />Tableau</div>
+            <div class="skill-chip"><img src="https://api.iconify.design/logos/microsoft-power-bi.svg" alt="" />Power BI
+            </div>
+            <div class="skill-chip"><img src="https://logo.clearbit.com/sigmacomputing.com" alt=""
+                style="width:17px;height:17px;object-fit:contain;border-radius:3px;" />Sigma</div>
+            <div class="skill-chip"><img src="https://api.iconify.design/logos/aws.svg" alt="" />QuickSight</div>
+            <div class="skill-chip"><img src="https://logo.clearbit.com/alteryx.com" alt=""
+                style="width:17px;height:17px;object-fit:contain;border-radius:3px;" />Alteryx</div>
+            <div class="skill-chip"><img src="https://api.iconify.design/logos/tableau.svg" alt="" />Tableau Prep</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="skill-group-title">Cloud &amp; Data Engineering</div>
+          <div class="skill-icons">
+            <div class="skill-chip"><img src="https://api.iconify.design/logos/aws-s3.svg" alt="" />AWS S3</div>
+            <div class="skill-chip"><img src="https://api.iconify.design/logos/aws.svg" alt="" />AWS Glue</div>
+            <div class="skill-chip"><img src="https://api.iconify.design/logos/aws.svg" alt="" />Athena</div>
+            <div class="skill-chip"><img src="https://api.iconify.design/logos/aws-lambda.svg" alt="" />Lambda</div>
+            <div class="skill-chip"><img src="https://api.iconify.design/logos/databricks.svg" alt="" />Databricks</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- FOOTER / CONTACT -->
+  <footer id="contact">
+    <div>
+      <div class="footer-name">Rohith C R</div>
+      <div class="footer-tagline"> Seattle, WA</div>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:rohith02@uw.edu"><i class="fas fa-envelope"></i> rohith02@uw.edu</a>
+      <a href="tel:+12064667796"><i class="fas fa-phone"></i> +1 206-466-7796</a>
+      <a href="https://linkedin.com/in/rohith-cr" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://public.tableau.com" target="_blank"><i class="fas fa-chart-bar"></i> Tableau Public</a>
+      <a href="https://github.com/rohithcr" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    </div>
+    <div class="footer-copy">Â© 2026 Rohith C R Â· Built with â¤ï¸ , Google, antigravity and existential crisis </div>
+  </footer>
+
+  <script>
+    // Ensure the page always scrolls to the top on reload
+    if (history.scrollRestoration) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
+    // Also handle regular reloads
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    };
+  </script>
+</body>
+
+</html>
